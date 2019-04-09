@@ -1,29 +1,53 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+<div id="app">
+  <transition name="fade" mode="out-in">
+    <router-view></router-view>
+  </transition>
+</div>
 </template>
 
+<script>
+import 'normalize.css';
+import { mapActions } from 'vuex';
+
+export default {
+  name: 'App',
+  mounted() {
+    this.requestMIDIAccess();
+  },
+  methods: {
+    ...mapActions(['requestMIDIAccess']),
+  },
+};
+</script>
+
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@import "styles/settings.scss";
+
+#app,
+body,
+html {
+    width: 100%;
+    height: 100%;
+    background: $background-light;
+    font-family: $font-stack;
 }
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+hr {
+    border: none;
+    height: 1px;
+    background: $accent-light;
+    width: 80%;
+    margin: 30px auto;
+}
+
+// Router transition
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.3s;
+}
+/* .fade-leave-active below version 2.1.8 */
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
 }
 </style>

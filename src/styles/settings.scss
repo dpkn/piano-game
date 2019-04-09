@@ -1,0 +1,58 @@
+$font-stack: 'Open Sans', sans-serif;
+$font-color-light: #FFF;
+$font-color-dark: #000;
+
+// User Interface colours
+$background-light: #FFFFFF;
+$background-dark: #2A2E43;
+$background-extra-dark: #1c1f2d;
+
+$accent-light: #F6F6F6;
+$accent-dark: #E4E4E4;
+$accent-flashy: #FEBD35;
+
+// Every note correspondends to its own colour
+$color-a: #FF9056;
+$color-b: #FF5F99;
+$color-c: #C940EA;
+$color-d: #665FFF;
+$color-e: #5773FF;
+$color-f: #3598FE;
+$color-g: #3BCDE2;
+
+:export {
+  color-a: $color-a;
+  color-b: $color-b;
+  color-c: $color-c;
+}
+
+// Border radius that is used throughout the start-game
+$global-radius-large: 15px;
+
+// MIX-INS
+
+@mixin center($position) {
+  position: absolute;
+
+
+  @if $position == 'vertical' {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  } @else
+  if $position == 'horizontal' {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translate(-50%);
+  } @else
+  if $position == 'both' {
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+}
